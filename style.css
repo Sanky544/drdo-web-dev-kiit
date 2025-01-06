@@ -45,7 +45,7 @@ h1 {
 
 .subforum-row {
     display: grid;
-    grid-template-columns: 7% 60% 13% 20%;
+    grid-template-columns: 10% 50% 15% 25%;  /* Adjusted for full width */
 }
 
 .subforum-column {
