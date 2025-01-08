@@ -13,7 +13,7 @@ html {
 }
 
 a {
-    color: #1E90FF;  /* Lighter color for links */
+    color: #0e85fc;  /* Lighter color for links */
     font-weight: bolder;
     text-decoration: none;
 }
@@ -31,28 +31,90 @@ h1 {
     padding: 20px;
     border-radius: 10px;  /* Round edges */
 }
+#latest-bulletin {
+    width: 100%;
+    height: 80px;  /* Increased height */
+    background-color: #f4f4f4;
+    padding: 10px 20px;
+    border-radius: 10px;  /* Rounded corners */
+    font-size: 18px;  /* Increased font size */
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Adding a shadow */
+    border: 2px solid #ddd;
+    display: flex;
+    align-items: center; /* Vertically center the content */
+    justify-content: center; /* Horizontally center the content */
+}
+
+.bulletin-scroll {
+    position: absolute;
+    white-space: nowrap;
+    animation: scroll-left 20s linear infinite;  /* Slower speed */
+    font-weight: bold;
+    display: flex;  /* Display items in a row */
+    align-items: center; /* Vertically center the text */
+}
+
+/* Styling individual posts */
+.bulletin-scroll a {
+    margin-right: 30px; /* Spacing between posts */
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+/* Add alternating colors for blinking effect */
+@keyframes blink {
+    0% {
+        color: red;
+    }
+    50% {
+        color: blue;
+    }
+    100% {
+        color: red;
+    }
+}
+
+/* Apply blinking effect to the posts */
+.bulletin-scroll a {
+    animation: blink 1s infinite;  /* Blink every 1 second */
+}
+
+/* Animations for scrolling effect */
+@keyframes scroll-left {
+    0% {
+        left: 100%;
+    }
+    100% {
+        left: -100%;
+    }
+}
+
 
 .subforum {
     margin-top: 20px;
 }
 
-.subforum-title {
-    background-color: #F8F8F8;  /* Lighter background */
-    padding: 5px;
-    border-radius: 10px;  /* Round edges */
-    margin: 4px;
-}
-
 .subforum-row {
     display: grid;
     grid-template-columns: 10% 50% 15% 25%;  /* Adjusted for full width */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+.subforum-row:hover {
+    background-color: #f0f8ff; /* Light blue background on hover */
+    transform: translateY(-5px); /* Slightly lift the row on hover */
 }
 
 .subforum-column {
     padding: 10px;
     margin: 4px;
     border-radius: 10px;  /* Round edges */
-    background-color: #F0F0F0;  /* Light gray for sections */
+    background-color: #e7e6e6;  /* Light gray for sections */
 }
 
 .subforum-description * {
@@ -98,8 +160,16 @@ h1 {
     }
 
     .subforum-title {
-        font-size: 14px;
+        background-image: radial-gradient(circle, #97d6fa, #ffffff);  /* Lighter gradient background */
+        padding: 10px;  /* Add padding for readability */
+        border-radius: 10px;  /* Rounded edges for a clean look */
+        margin: 4px;
+        color: #000;  /* Ensure text color stands out */
+        font-weight: bold;  /* Optional: Make the title bold */
     }
+    
+    
+    
 }
 
 /* For tablets */
@@ -132,8 +202,24 @@ header {
     margin-inline: 10px;
 }
 
-#logo{
+#logo {
     width: 70px;
+}
+
+/* Link Hover Effect within Subforum Row */
+.subforum-row a {
+    color: #000;  /* Default color: Black */
+    text-decoration: none; /* Remove underline from links */
+    font-weight: bold; /* Bold text */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.subforum-row a:hover {
+    color: #007BFF;  /* Blue color on hover */
+    text-decoration: underline; /* Underline when hovered */
+    text-decoration-color: #007BFF; /* Blue underline color */
+    background-color: #e6f0ff;  /* Light blue background on hover */
+    border-radius: 3px;  /* Optional rounded corners for hover effect */
 }
 
 /* Nav Bar styles */
@@ -144,13 +230,14 @@ header {
 }
 
 .navigation {
-    background-color: #4CAF50;  /* Lighter background for the nav bar */
+    background-color: #0A5EB0;  /* Lighter background for the nav bar */
     padding: 10px;
     width: 80%;  /* Increase width of navbar */
     display: inline-block;
     border-radius: 10px;  /* Round edges for navbar */
     max-height: 80px;
     margin-right: 10px;
+    color: #F0F0F0;
 }
 
 .close-icon i {
@@ -171,7 +258,7 @@ header {
     margin-inline: 20px;
     font-size: 20px;
     padding: 10px;
-    color: #000000;  /* Dark color for the text */
+    color: #ffffff;  /* Dark color for the text */
 }
 
 .nav-item a:hover {
@@ -198,7 +285,9 @@ header {
 .brand {
     font-size: 2rem;
     display: inline-block;
-    font-family: aquire;
+    font-family:'Times New Roman';
+    font-weight: bold;
+    font-size: 30px;
 }
 
 /* Navbar for the smartphones */
@@ -234,55 +323,195 @@ header {
 }
 
 /* Search Box styles */
+/* Search Box styles */
+
 .search-box {
-    border: solid 1px #4CAF50;  /* Lighter border */
+    border: solid 1px #0022ff; /* Lighter border */
     margin-top: 20px;
-    padding: 40px;
+    margin-bottom: 20px;
+    padding: 30px;
     display: flex;
     justify-content: center;
-    box-shadow: 1px 2px 3px #4CAF50;
-    border-radius: 10px;  /* Round edges */
-    width: 100%;  /* Full width */
+    box-shadow: 0 4px 15px rgba(0, 34, 255, 0.2); /* Soft shadow */
+    border-radius: 30px; /* Rounder edges */
+    width: 100%; /* Full width */
+    background-color: #ffffff; /* White background */
+    background-image: linear-gradient(to right, #e0f7fa, #bbdefb); /* Soft gradient */
+    transition: box-shadow 0.3s ease, background-color 0.3s ease; /* Smooth transition for hover */
+    position: relative;
+    overflow: visible; /* Allow the dropdown to be visible */
 }
 
-.search-box select {
-    width: 15vw;  
-    padding: 10px;
-    border-radius: 10px;
+.search-box:hover {
+    box-shadow: 0 6px 20px rgba(0, 34, 255, 0.4); /* Stronger shadow on hover */
+    background-color: #e8f4f8; /* Lighter background on hover */
 }
 
+/* Input Field styles */
 .search-box input {
-    width: 70vw;  
-    padding: 10px; 
-    border-radius: 10px;
+    width: 55vw;
+    padding: 15px;
+    border-radius: 40px; /* Larger roundness */
+    margin-left: 15px;
+    margin-right: 20px;
+    border: 2px solid #0022ff; /* Thicker blue border */
+    font-size: 16px;
+    font-weight: 500; /* Slightly bolder font */
+    color: #333; /* Dark text color */
+    transition: all 0.3s ease;
+    background-color: #f9f9f9; /* Subtle background for input */
 }
 
+/* Focus state for input */
+.search-box input:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 34, 255, 0.5); /* Glowing effect on focus */
+    border-color: #007bff;
+    background-color: #fff; /* White background on focus */
+}
+
+/* Hover effects for the input */
+.search-box input:hover {
+    border-color: #007bff; /* Lighter border on hover */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Glowing border */
+}
+
+/* Button styles */
 .search-box button {
-    width: 5vw;  
-    padding: 10px;
-    background-color: #FFFFFF;
-    color: #000000;
-    border-radius: 10px;
+    width: 7vw;
+    padding: 15px;
+    background-color: #0022ff; /* Blue background */
+    color: white;
+    border: none;
+    border-radius: 40px; /* Larger roundness */
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 34, 255, 0.2);
 }
 
+/* Hover effect for the button */
 .search-box button:hover {
-    background-color: #4CAF50;  /* Green button on hover */
-    color: #FFFFFF;  /* White text */
-    box-shadow: 1px 2px 3px #4CAF50;
+    background-color: #007bff; /* Lighter blue on hover */
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.5); /* Glowing effect */
+    transform: translateY(-3px); /* Slight lift effect */
 }
 
-/* search box for smartphones */
+/* Active state for the button */
+.search-box button:active {
+    background-color: #0056b3; /* Darker blue on click */
+    box-shadow: none; /* Remove shadow on click */
+    transform: translateY(2px); /* Simulate button press */
+}
+
+/* Autocomplete dropdown styles */
+#suggestionsList {
+    position: absolute;
+    top: 100%; /* Position directly below the input */
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+    width: 100%;
+    z-index: 1000;
+    margin-top: 5px;
+    padding: 0;
+    list-style-type: none;
+    display: none; /* Hide suggestions by default */
+}
+
+#suggestionsList li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+#suggestionsList li:hover {
+    background-color: #f1f1f1; /* Light hover background */
+}
+
+/* Mobile view styles */
 @media screen and (max-width: 460px) {
     .search-box {
-        flex-direction: column;  /* Stack items vertically */
-        align-items: stretch;    /* Stretch input and button to full width */
+        flex-direction: column; /* Stack items vertically */
+        align-items: stretch; /* Stretch input and button to full width */
+        padding: 20px; /* Reduced padding for smaller screens */
     }
 
-    .search-box input, .search-box button, .search-box select {
+    .search-box input, .search-box button {
         width: 100%;
-        margin-top: 5px;
+        margin-top: 10px;
     }
 }
+
+
+/* Description Box styles */
+.description-box {
+    padding: 20px;
+    background: linear-gradient(135deg, #f0f8ff, #e6f0ff); /* Soft gradient */
+    border-radius: 15px;
+    box-shadow: 3px 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    transition: all 0.3s ease;  /* Smooth transition */
+    margin: 20px;
+    font-size: 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+.description-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 34, 255, 0.1), rgba(0, 34, 255, 0));
+    animation: moveBg2 8s linear infinite;  /* Animation for dynamic background */
+    z-index: -1;  /* Place it behind content */
+}
+
+@keyframes moveBg2 {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-100%, -100%); }
+}
+
+.description-box:hover {
+    background: linear-gradient(135deg, #e6f0ff, #d0e5ff);  /* Lighter gradient on hover */
+    box-shadow: 3px 4px 18px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
+.description-box p {
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+.description-box h3 {
+    font-size: 20px;
+    color: #0022ff;
+    margin-bottom: 10px;
+}
+
+.description-box a {
+    color: #0022ff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.description-box a:hover {
+    color: #007bff;
+    text-decoration: underline;
+    transform: translateX(5px); /* Slightly shift the link to the right on hover */
+}
+
+@media screen and (max-width: 460px) {
+    .description-box {
+        padding: 15px;
+        margin: 15px;
+    }
+}
+
 
 /* forum info Styling */
 .forum-info {
@@ -300,10 +529,10 @@ header {
 footer {
     margin-top: 20px;
     padding: 20px;
-    background-color: #4CAF50;  /* Green background for footer */
+    background-color: #74cafb;  
     display: block;
     text-align: center;
-    border-radius: 10px;  /* Round edges */
+    border-radius: 0px;  /* Round edges */
 }
 
 /* ########################################### */
@@ -323,54 +552,111 @@ footer {
     border-radius: 5px;  /* Round edges for headers */
 }
 
-.table-head .status {
+.table-head .slno
+ {
     flex: 5%;
 }
 
 .table-head .subjects {
-    flex: 70%;
+    flex: 50%;
 }
 
-.table-head .replies {
+.table-head .views
+ {
     flex: 10%;
 }
 
-.table-head .last-reply {
-    flex: 15%;
+.table-head .reply
+ {
+    flex: 10%;
 }
-
+.table-head .reply,.table-head .subjects, .table-head .views, .table-head .slno{
+background-image: radial-gradient(circle, #97d6fa, white);
+margin-bottom: 2%; }
 /* posts table's body  */
 
 .table-row {
     display: flex;
     flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 5px; /* Add spacing between items */
+    align-items: center; /* Align items vertically */
+    margin-bottom: 10px; /* Add space between rows */
 }
 
-.table-row .status, .table-row .subjects, .table-row .replies, .table-row .last-reply {
-    padding: 5px;
-    margin: 2px;
-    background-color: #FFFFFF;  /* White background for rows */
-    border-radius: 5px;  /* Round edges for rows */
-    flex: 1 1 100%; /* Flex items stack on smaller screens */
+.table-row .slno, 
+.table-row .subjects, 
+.table-row .views, 
+.table-row .reply {
+    padding: 10px; /* Slightly increased padding for better spacing */
+    margin: 0; /* Remove extra margin for consistency */
+    background-color: #e7e6e6; /* Softer background for better aesthetics */
+    border-radius: 5px; /* Keep rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+    flex: 1 1 100%; /* Maintain responsiveness */
 }
 
-.table-row .status {
-    flex: 5%;
-    font-size: 30px;
+.table-row .slno {
+    flex: 5%; /* Maintain the current width ratio */
+    font-size: 15px;
+    font-weight: bold; /* Make the serial number stand out */
     text-align: center;
+    color: #333; /* Darker text color */
 }
 
 .table-row .subjects {
-    flex: 70%;
+    flex: 50%; /* Maintain current width */
+    font-size: 16px;
+    line-height: 1.5; /* Improve readability */
+    color: #007BFF; /* Add a blue tint to the text for visibility */
+    transition: color 0.3s ease; /* Smooth transition for text color */
 }
 
-.table-row .replies {
-    flex: 10%;
+/* Hover effect for .subjects (entire subject area) */
+.table-row .subjects:hover {
+    color: #0056b3; /* Darker blue when hovering over the entire subject */
+    background-color: #f0f8ff;  /* Light background color change for the subject area */
+    border-radius: 5px;  /* Optional: rounded corners on hover */
+    transition: all 0.3s ease; /* Smooth transition */
 }
 
-.table-row .last-reply {
-    flex: 15%;
+/* Link styling inside .subjects */
+.table-row .subjects a {
+    text-decoration: none; /* Remove underline from links */
+    color: #000; /* Default color: Black */
+    font-weight: bold; /* Make the text bold for emphasis */
+    transition: all 0.3s ease; /* Smooth transition for color and underline */
+    padding: 2px 5px; /* Add some space around the text */
 }
+
+/* Hover effect for the link inside .subjects */
+.table-row .subjects a:hover {
+    color: #007BFF; /* Change color to blue on hover */
+    text-decoration: underline; /* Underline when hovered */
+    text-decoration-color: #007BFF; /* Add a blue color to the underline */
+    background-color: #e6f0ff; /* Light blue background on hover for contrast */
+    border-radius: 3px; /* Optional rounded corners for the hover effect */
+}
+
+/* Focus effect for the link */
+.table-row .subjects a:focus {
+    outline: none; /* Remove the default focus outline */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a blue glow effect on focus */
+}
+
+.table-row .views {
+    flex: 10%; /* Maintain the width ratio */
+    font-size: 15px;
+    text-align: center;
+    color: #555; /* Use a neutral color */
+}
+
+.table-row .reply {
+    flex: 10%; /* Maintain the width ratio */
+    font-size: 15px;
+    text-align: center;
+    color: #555; /* Match the color with views for consistency */
+}
+
 
 /* navigation path */
 .navigate {
@@ -388,35 +674,104 @@ footer {
     font-weight: bolder;
 }
 
-/* Pagination*/
+/* Pagination Container */
 .pagination {
     padding: 20px;
-    font-size: 15px;
+    font-size: 16px;  /* Increase font size for better readability */
+    text-align: center;  /* Center-align the pagination */
 }
 
+/* Pagination Links */
 .pagination a {
-    color: #000000;  /* Dark color for pagination links */
+    color: #007BFF;  /* Blue color for pagination links */
     margin-inline: 5px;
-    padding: 5px 10px;
-    border: solid 0.5px #000000;  /* Black border */
-    border-radius: 5px;  /* Round edges */
+    padding: 8px 15px;  /* Add more space around the links */
+    border: solid 0.5px #007BFF;  /* Blue border to match the link color */
+    border-radius: 50px;  /* Rounded buttons with a pill shape */
+    transition: all 0.3s ease;  /* Smooth transition for hover effects */
+    text-decoration: none;  /* Remove underline from links */
+    display: inline-block;  /* Make the link a block element */
 }
 
+/* Hover Effect for Pagination Links */
 .pagination a:hover {
-    opacity: 0.5;
+    background-color: #007BFF;  /* Light blue background on hover */
+    color: white;  /* Change text color to white on hover */
+    border-color: #0056b3;  /* Darker border color on hover */
+    transform: scale(1.1);  /* Slight zoom effect when hovered */
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.4);  /* Add a subtle blue shadow */
 }
 
-.note {
-    background-color: #FFFFFF;  /* White background */
+/* Active Page Style */
+/* Active Page Style */
+.pagination .active {
+    background: linear-gradient(135deg, #007BFF, #00b3e3);
+    color: white;
+    border-color: #0056b3;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.4);
+}
+
+/* Disabled Page Link */
+.pagination .disabled {
+    color: #b0b0b0;
+    border-color: #b0b0b0;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+/* Hover Effects */
+.pagination a:hover {
+    background-color: #007BFF;
+    color: white;
+    border-color: #0056b3;
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.4);
+}
+
+
+/* Previous and Next Buttons */
+.pagination .prev, .pagination .next {
+    font-weight: bold;  /* Bold text for prev/next buttons */
+    text-transform: uppercase;  /* Make text uppercase for emphasis */
+    letter-spacing: 1px;  /* Add spacing between letters */
+}
+
+/* Animation for Hovering */
+.pagination a {
+    position: relative;
+    overflow: hidden;
+}
+
+.pagination a::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(0, 123, 255, 0.1);  /* Blue background effect */
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    transition: all 0.4s ease;
+}
+
+.pagination a:hover::before {
+    transform: translate(-50%, -50%) scale(1);  /* Animate the blue effect */
+}
+
+/* Footer Styling */
+footer {
+    width: 100%;  /* Make the footer span 100% of the page width */
+    margin: 0;    /* Remove any default margin */
     padding: 20px;
+    background-color: #74cafb;  
     display: block;
-    border-radius: 10px;  /* Round edges */
+    text-align: center;
+    border-radius: 0px;  /* Round edges */
+    box-sizing: border-box;  /* Ensure padding is included in the width */
 }
 
-.note span {
-    font-size: 20px;
-    margin-block: 5px;
-}
 
 /* ########################################### */
 /*            detail.html                      */
@@ -427,16 +782,13 @@ footer {
     background-color: #F0F0F0;  /* Light gray background */
     padding: 5px;
     font-weight: bold;
-    font-size: 15px;
+    font-size: px;
     border-radius: 5px;  /* Round edges */
 }
 
-.authors {
-    flex: 20%;
-}
 
-.content {
-    flex: 80%;
+.authors {
+    flex: 100%;
 }
 
 .body {
@@ -459,33 +811,138 @@ footer {
     border: none;
     padding: 10px;
     font-weight: bolder;
-    box-shadow: 4px 6px #fff;
+    box-shadow: 4px 6px #031bf3;
     cursor: pointer;
     float: right;
     border-radius: 5px;  /* Round edges for buttons */
 }
 
-/* comment section */
-.comment-area {
-    margin-bottom: 50px;
-}
-
-.comment-section {
-    background-color: #F0F0F0;  /* Light gray background for comments */
-    border-radius: 5px;  /* Round edges for comments */
+.news-content h1 {
+    font-size: 20px;
+    font-style: normal; /* Ensure text is not italicized */
+    font-weight: bold;
+    color: black;
+    margin-bottom: 20px;
+    text-align: center;
+    background-image: radial-gradient(circle, #97d6fa, #ffffff);  /* Lighter gradient background */
     padding: 10px;
+    border-radius: 10px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+.news-content span {
+    font-style: normal; /* Ensure text is not italicized */
+    font-weight: normal; /* Remove bold if needed */
+    color: #333333; /* Dark text color */
+    font-size: 18px; /* Increase font size of the list items */
 }
 
+/* Reply Section */
+.reply-section {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-top: 2px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Reply Button */
+.reply-button {
+    background: #0056b3; /* Higher contrast blue */
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: inline-block; /* Ensures proper centering */
+    text-align: center;
+}
+
+.reply-button:hover {
+    background: #003c82; /* Darker blue for hover */
+    transform: scale(1.1); /* Subtle hover effect */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Comment Section */
+.comment-section {
+    display: none; /* Hidden by default */
+    margin-top: 20px;
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 600px; /* Limits width for responsiveness */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Comment Textarea */
 .comment-textarea {
-    border-radius: 10px;  /* Round edges for text area */
+    width: 90%;
+    max-width: 100%;
+    height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    resize: none;
+    margin-bottom: 15px;
+    font-size: 14px;
+    line-height: 1.5;
 }
 
+/* Emoji Picker */
+.emoji-picker {
+    margin-bottom: 10px;
+}
+
+.emoji-picker button {
+    font-size: 1.2rem;
+    background: none;
+    border: none;
+    margin: 5px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.emoji-picker button:hover {
+    transform: scale(1.3);
+}
+
+/* Submit Comment */
 .submit-comment {
-    border-radius: 10px;  /* Round edges for submit button */
+    background: #4caf50; /* High contrast green */
+    color: #ffffff;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
 }
 
-/* date */
-.date {
-    font-size: 10px;
-    color: #777777;  /* Lighter gray for date */
+.submit-comment:hover {
+    background: #3d8e41; /* Slightly darker green for hover */
+    transform: scale(1.05); /* Subtle hover effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer Styling */
+footer {
+    width: 100%;  /* Make the footer span 100% of the page width */
+    margin: 0;    /* Remove any default margin */
+    padding: 20px;
+    background-color: #74cafb;  
+    display: block;
+    text-align: center;
+    border-radius: 0px;  /* Round edges */
+    box-sizing: border-box;  /* Ensure padding is included in the width */
 }

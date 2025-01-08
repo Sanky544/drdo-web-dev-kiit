@@ -19,132 +19,104 @@
                 <ul class="nav-list">
                     <li class="nav-item"><a href="forums.html">Forums</a></li>
                     <li class="nav-item"><a href="posts.html">Posts</a></li>
-                    <li class="nav-item"><a href="detail.html">Detail</a></li>
+                    <li class="nav-item"><a href="Login2.html">Login</a></li>
                 </ul>
             </nav>
             <a class="bar-icon" id="iconBar" onclick="hideIconBar()"><i class="fa fa-bars"></i></a>
-            <div class="brand">My Forum</div>
+            <img src="http://testhr.ct.ws/logo.jpeg" id="logo"  alt="drdo logo"/>
+            <div class="brand">ठोसावस्था भौतिकी प्रयोगशाला बुलेटिन बोर्ड / Solid State Physics Laboratory Bulletin Board</div>
         </div>
         <!--SearchBox Section-->
-        <div class="search-box">
-            <div>
-                <select name="" id="">
-                    <option value="Everything">Everything</option>
-                    <option value="Titles">Titles</option>
-                    <option value="Descriptions">Descriptions</option>
-                </select>
-                <input type="text" name="q" placeholder="search ...">
-                <button><i class="fa fa-search"></i></button>
-            </div>
+        <!-- SearchBox Section -->
+<div class="search-box">
+    <div>
+        <input type="text" id="search-input" placeholder="Search..." onkeyup="searchKeyword()">
+        <button id="search-button" onclick="searchKeyword()"><i class="fa fa-search"></i></button>
+    </div>
+</div>
+
         </div>
     <div class="container">
         <!--Navigation-->
         <div class="navigate">
-            <span><a href="">MyForum - Forums</a> >> <a href="">random subforum</a> >> <a href="">random topic</a></span>
+            <span><a href="./forums.html">Forums</a> >> <a href="./posts.html">Posts</a> >> <a href="./detail.html">Details</a></span>
         </div>
 
-        <!--Topic Section-->
-        <div class="topic-container">
-            <!--Original thread-->
-            <div class="head">
-                <div class="authors">Author</div>
-                <div class="content">Topic: random topic (Read 1325 Times)</div>
-            </div>
-
-            <div class="body">
-                <div class="authors">
-                    <div class="username"><a href="">Username</a></div>
-                    <div>Role</div>
-                    <img src="https://cdn.pixabay.com/photo/2015/11/06/13/27/ninja-1027877_960_720.jpg" alt="">
-                    <div>Posts: <u>45</u></div>
-                    <div>Points: <u>4586</u></div>
-                </div>
-                <div class="content">
-                    Just a random content of a random topic.
-                    <br>To see how it looks like.
-                    <br><br>
-                    Nothing more and nothing less.
-                    <br>
-                    <hr>
-                    Regards username
-                    <br>
-                    <div class="comment">
-                        <button onclick="showComment()">Comment</button>
-                    </div>
-                </div>
-            </div>
+        <div class="news-content">
+            <h1>🚀 DRDO Administrative Reforms - Boosting Efficiency & Innovation</h1>  
+            <br>
+            <span><strong>📅 Key Updates</strong></span>  
+            <br><br>
+            DRDO has implemented a series of significant reforms aimed at improving organizational efficiency, transparency, and overall employee satisfaction. Below are the latest updates:  
+            <br><br>
+            
+            <span>✅ <strong>Faster Approvals</strong></span>  
+            <br>
+            Lab directors and project managers now have delegated powers, ensuring quicker decision-making and accelerated project timelines.  
+            <br><br>
+            
+            <span>✅ <strong>Digital Workflows</strong></span>  
+            <br>
+            A centralized platform has been introduced to streamline operations, enhance data access, and improve project management.  
+            <br><br>
+            
+            <span>✅ <strong>Transparent Finances</strong></span>  
+            <br>
+            Real-time budget tracking and an online procurement system have been launched to ensure full financial transparency and reduce delays.  
+            <br><br>
+            
+            <span>✅ <strong>Employee Growth</strong></span>  
+            <br>
+            New training and development programs are in place to equip DRDO personnel with the skills needed to stay ahead in rapidly advancing technologies.  
+            <br><br>
+            
+            <span>✅ <strong>Workplace Enhancements</strong></span>  
+            <br>
+            Flexible work policies and an enhanced grievance redressal system are introduced to improve work-life balance and employee well-being.  
+            <br><br>
+            
+            <span>✅ <strong>Sustainability</strong></span>  
+            <br>
+            Green initiatives are being implemented across administrative offices to reduce environmental impact, including energy-efficient practices and renewable energy adoption.  
+            <br><br>
+            
+            <span><strong>💡 Why These Reforms Matter</strong></span>  
+            <br><br>
+            These changes are set to:  
+            <br><br>
+            - Accelerate project completion with empowered decision-makers.  
+            <br>
+            - Improve financial transparency and accountability.  
+            <br>
+            - Enhance employee satisfaction and development.  
+            <br>
+            - Drive innovative solutions in defense technologies.  
+            <br>
+            - Promote environmental sustainability in all operations.  
+            <br><br>
+            
+            <span><strong>Stay tuned for more updates as DRDO continues to make strides in innovation and national security!</strong></span>  
         </div>
-
-        <!--Comment Area-->
-        <div class="comment-area hide" id="comment-area">
-            <textarea name="comment" id="" placeholder="comment here ... "></textarea>
-            <input type="submit" value="submit">
-        </div>
-
-        <!--Comments Section-->
-        <div class="comments-container">
-            <div class="body">
-                <div class="authors">
-                    <div class="username"><a href="">AnotherUser</a></div>
-                    <div>Role</div>
-                    <img src="https://cdn.pixabay.com/photo/2015/11/06/13/27/ninja-1027877_960_720.jpg" alt="">
-                    <div>Posts: <u>455</u></div>
-                    <div>Points: <u>4586</u></div>
-                </div>
-                <div class="content">
-                    Just a comment of the above random topic.
-                    <br>To see how it looks like.
-                    <br><br>
-                    Nothing more and nothing less.
-                    <br>
-                    <br>
-                    <div class="comment">
-                        <button onclick="showReply()">Reply</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--Reply Area-->
-        <div class="comment-area hide" id="reply-area">
-            <textarea name="reply" id="" placeholder="reply here ... "></textarea>
-            <input type="submit" value="submit">
-        </div>
-
-
-        <!--Another Comment With replies-->
-        <div class="comments-container">
-            <div class="body">
-                <div class="authors">
-                    <div class="username"><a href="">AnotherUser</a></div>
-                    <div>Role</div>
-                    <img src="https://cdn.pixabay.com/photo/2015/11/06/13/27/ninja-1027877_960_720.jpg" alt="">
-                    <div>Posts: <u>455</u></div>
-                    <div>Points: <u>4586</u></div>
-                </div>
-                <div class="content">
-                    Just a comment of the above random topic.
-                    <br>To see how it looks like.
-                    <br><br>
-                    Nothing more and nothing less.
-                    <br>
-                    <br>
-                    <div class="comment">
-                        <button onclick="showReply()">Reply</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--Reply Area-->
-        <div class="comment-area hide" id="reply-area">
-            <textarea name="reply" id="" placeholder="reply here ... "></textarea>
-            <input type="submit" value="submit">
-        </div>
-
         
-
-    </div>
+        
+        
+        <!-- Reply Button Section -->
+        <div class="reply-section">
+            <button class="reply-button" onclick="showComment()">Reply 💬</button>
+            <div class="comment-section" id="comment-box" style="display: none;">
+                <textarea class="comment-textarea" placeholder="Type your reply here..."></textarea>
+                <div class="emoji-picker">
+                    <button onclick="addEmoji('😊')">😊</button>
+                    <button onclick="addEmoji('👍')">👍</button>
+                    <button onclick="addEmoji('❤️')">❤️</button>
+                    <button onclick="addEmoji('🎉')">🎉</button>
+                </div>
+                <button class="submit-comment" onclick="submitReply()">Submit</button>
+            </div>
+        </div>
+    </div> 
     <footer>
-        <span>&copy;  Selmi Abderrahim | All Rights Reserved</span>
+        <span>&copy;  Solid State Physics Laboratory | All Rights Reserved</span></footer>
     </footer>
     <script src="main.js"></script>
 </body>
