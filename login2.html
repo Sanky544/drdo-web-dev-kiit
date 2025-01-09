@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="loginstyles.css">
+</head>
+<body>
+    <div class="hero">
+        <div class="form-box">
+            <div class="button-box">
+                <div id="btn"></div>
+                <button type="button" class="toggle-btn" onclick="login()">Employee</button>
+                <button type="button" class="toggle-btn admin-btn" onclick="register()">Admin</button>
+            </div>
+            <form id="login" class="input-group" >
+                <!-- Added IDs to match the JavaScript -->
+                <input type="text" class="input-field" id="employeeId" style="font-size:25px;" placeholder="Employee Id" required>
+                <input type="password" class="input-field" id="employeePassword" style="font-size:25px;" placeholder="Password" required>
+                <button type="submit" class="submit-btn">Log In</button>
+            </form>
+            <form id="register" class="input-group" >
+                <!-- Added IDs to match the JavaScript -->
+                <input type="text" class="input-field" id="adminId" style="font-size:25px;" placeholder="Admin Id" required>
+                <input type="password" class="input-field" id="adminPassword" style="font-size:25px;" placeholder="Password" required>
+                <input type="password" class="input-field" id="adminKey" style="font-size:25px;" placeholder="Admin Key" required>
+                <button type="submit" class="submit-btn">Log In</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        var x = document.getElementById("login");
+        var y = document.getElementById("register");
+        var z = document.getElementById("btn");
+
+        function register(){
+            x.style.left = "-400px";
+            y.style.left = "50px";
+            z.style.left = "150px";
+        }
+
+        function login(){
+            x.style.left = "50px";
+            y.style.left = "450px";
+            z.style.left = "0";
+        }
+
+        // Employee login form submission
+        document.getElementById("login").onsubmit = function(event) {
+            event.preventDefault();
+            
+            const employeeId = document.getElementById("employeeId").value;
+            const password = document.getElementById("employeePassword").value;
+
+            // Here you would typically validate credentials against a backend
+            // For now, we'll just check if fields are not empty
+            if (employeeId && password) {
+                // Store login state and user info
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('userType', 'employee');
+                localStorage.setItem('userId', employeeId);
+                
+                // Redirect to forums page
+                window.location.href = "forums.html";
+            }
+        }
+
+        // Admin login form submission
+        document.getElementById("register").onsubmit = function(event) {
+            event.preventDefault();
+            
+            const adminId = document.getElementById("adminId").value;
+            const password = document.getElementById("adminPassword").value;
+            const adminKey = document.getElementById("adminKey").value;
+
+            // Here you would typically validate admin credentials against a backend
+            // For now, we'll just check if fields are not empty
+            if (adminId && password && adminKey) {
+                // Store login state and user info
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('userType', 'admin');
+                localStorage.setItem('userId', adminId);
+                
+                // Redirect to forums page
+                window.location.href = "forums.html";
+            }
+        }
+
+        // Add this to help debug
+        console.log('Script loaded');
+    </script>
+    <script src="https://kit.fontawesome.com/6c1a55b681.js" crossorigin="anonymous"></script>
+</body>
+</html>
