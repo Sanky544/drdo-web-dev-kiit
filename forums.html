@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital@1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
@@ -18,231 +20,342 @@
                 <span class="close-icon" id="close-icon" onclick="showIconBar()"><i class="fa fa-close"></i></span>
                 <ul class="nav-list">
                     <li class="nav-item"><a href="forums.html">Forums</a></li>
-                    <li class="nav-item"><a href="posts.html">Posts</a></li>
-                    <li class="nav-item"><a href="detail.html">Detail</a></li>
+                    <li class="nav-item"><a href="posts.html">Posts</a></li>                  
+                      <li class="nav-item"><a href="Login2.html">Login</a></li>
                 </ul>
             </nav>
             <a class="bar-icon" id="iconBar" onclick="hideIconBar()"><i class="fa fa-bars"></i></a>
-            <img src="C:\Users\guddu\Downloads\drdo logo.jpeg" id="logo" alt="drdo logo" />
+            <img src="http://testhr.ct.ws/logo.jpeg" id="logo"  alt="drdo logo"/>
             <div class="brand">ठोसावस्था भौतिकी प्रयोगशाला बुलेटिन बोर्ड / Solid State Physics Laboratory Bulletin Board</div>
         </div>
-        <!--SearchBox Section-->
-        <div class="search-box">
-            <div>
-                <select name="" id="">
-                    <option value="Everything">Everything</option>
-                    <option value="Titles">Titles</option>
-                    <option value="Descriptions">Descriptions</option>
-                </select>
-                <input type="text" name="q" placeholder="search ...">
-                <button><i class="fa fa-search"></i></button>
-            </div>
-        </div>
+ <!-- Search Box Section -->
+<div class="search-box">
+    <div>
+        <input type="text" id="searchInput" name="q" placeholder="Search for Department..." oninput="showSuggestions()" autocomplete="off">
+        <button onclick="searchDepartment()"><i class="fa fa-search"></i></button>
+    </div>
+    <!-- Autocomplete Suggestions -->
+    <ul id="suggestionsList" style="display: none;"></ul>
+</div>
+
+
     </header>
     <div class="container">
-        <div class="subforum">
-            <div class="subforum-title">
-                <h1>General Information</h1>
-            </div>
-            <div class="subforum-row">
-                <div class="subforum-icon subforum-column center">
-                    <i class="fa fa-car center"></i>
-                </div>
-                <div class="subforum-description subforum-column">
-                    <h4><a href="#">Description Title</a></h4>
-                    <p>Description Content: let's try to be cool, otherwise,w at 'sthe point in libing together with people youdont' live.</p>
-                </div>
-                <div class="subforum-stats subforum-column center">
-                    <span>24 Posts | 12 Topics</span>
-                </div>
-                <div class="subforum-info subforum-column">
-                    <b><a href="">Last post</a></b> by <a href="">JustAUser</a> 
-                    <br>on <small>12 Dec 2020</small>
-                </div>
-            </div>
-        </div>
-        <!--More-->
-        
-        <div class="subforum">
-            <div class="subforum-title">
-                <h1>General Information</h1>
-            </div>
-            <div class="subforum-row">
-                <div class="subforum-icon subforum-column center">
-                    <i class="fa fa-car center"></i>
-                </div>
-                <div class="subforum-description subforum-column">
-                    <h4><a href="#">Description Title</a></h4>
-                    <p>Description Content: let's try to be cool, otherwise,w at 'sthe point in libing together with people youdont' live.</p>
-                </div>
-                <div class="subforum-stats subforum-column center">
-                    <span>24 Posts | 12 Topics</span>
-                </div>
-                <div class="subforum-info subforum-column">
-                    <b><a href="">Last post</a></b> by <a href="">JustAUser</a> 
-                    <br>on <small>12 Dec 2020</small>
-                </div>
-            </div>
-            <hr class="subforum-devider">
-            <div class="subforum-row">
-                <div class="subforum-icon subforum-column center">
-                    <i class="fa fa-car center"></i>
-                </div>
-                <div class="subforum-description subforum-column">
-                    <h4><a href="#">Description Title</a></h4>
-                    <p>Description Content: let's try to be cool, otherwise,w at 'sthe point in libing together with people youdont' live.</p>
-                </div>
-                <div class="subforum-stats subforum-column center">
-                    <span>24 Posts | 12 Topics</span>
-                </div>
-                <div class="subforum-info subforum-column">
-                    <b><a href="">Last post</a></b> by <a href="">JustAUser</a> 
-                    <br>on <small>12 Dec 2020</small>
-                </div>
-            </div>
-            <hr class="subforum-devider">
-            <div class="subforum-row">
-                <div class="subforum-icon subforum-column center">
-                    <i class="fa fa-car center"></i>
-                </div>
-                <div class="subforum-description subforum-column">
-                    <h4><a href="#">Description Title</a></h4>
-                    <p>Description Content: let's try to be cool, otherwise,w at 'sthe point in libing together with people youdont' live.</p>
-                </div>
-                <div class="subforum-stats subforum-column center">
-                    <span>24 Posts | 12 Topics</span>
-                </div>
-                <div class="subforum-info subforum-column">
-                    <b><a href="">Last post</a></b> by <a href="">JustAUser</a> 
-                    <br>on <small>12 Dec 2020</small>
-                </div>
-            </div>
-            <hr class="subforum-devider">
-            <div class="subforum-row">
-                <div class="subforum-icon subforum-column center">
-                    <i class="fa fa-car center"></i>
-                </div>
-                <div class="subforum-description subforum-column">
-                    <h4><a href="#">Description Title</a></h4>
-                    <p>Description Content: let's try to be cool, otherwise,w at 'sthe point in libing together with people youdont' live.</p>
-                </div>
-                <div class="subforum-stats subforum-column center">
-                    <span>24 Posts | 12 Topics</span>
-                </div>
-                <div class="subforum-info subforum-column">
-                    <b><a href="">Last post</a></b> by <a href="">JustAUser</a> 
-                    <br>on <small>12 Dec 2020</small>
-                </div>
-            </div>
-            <hr class="subforum-devider">
-            <div class="subforum-row">
-                <div class="subforum-icon subforum-column center">
-                    <i class="fa fa-car center"></i>
-                </div>
-                <div class="subforum-description subforum-column">
-                    <h4><a href="#">Description Title</a></h4>
-                    <p>Description Content: let's try to be cool, otherwise,w at 'sthe point in libing together with people youdont' live.</p>
-                </div>
-                <div class="subforum-stats subforum-column center">
-                    <span>24 Posts | 12 Topics</span>
-                </div>
-                <div class="subforum-info subforum-column">
-                    <b><a href="">Last post</a></b> by <a href="">JustAUser</a> 
-                    <br>on <small>12 Dec 2020</small>
-                </div>
+        <div id="latest-bulletin">
+            <div class="bulletin-scroll" id="bulletin-posts">
+                <!-- Posts will be dynamically inserted here -->
             </div>
         </div>
         
         <div class="subforum">
             <div class="subforum-title">
-                <h1>General Information</h1>
+                <h1>विभाग सूचना/Department Information</h1>
             </div>
-            <div class="subforum-row">
-                <div class="subforum-icon subforum-column center">
-                    <i class="fa fa-car center"></i>
+                <div class="subforum-row">
+                    <div class="subforum-icon subforum-column center">
+                        <i class="fa fa-users center"></i>
+                    </div>
+                    <div class="subforum-description subforum-column">
+                        <h4><a href=" ./posts.html ">प्रशासन/Admin</a></h4> 
+                        <p>
+                           Posts: <a href="">Click here to view all</a>
+                        </p>
+                    </div>
+                    <div class="subforum-stats subforum-column center">
+                        <span>24 Posts <br> 12 Topics</span>
+                    </div>
+                    <div class="subforum-stats subforum-column center">
+                        <span>Views = 167 <br>
+                        Last Post: <a href="">Click here to view the last post</a></span>
+                    </div>
                 </div>
-                <div class="subforum-description subforum-column">
-                    <h4><a href="#">Description Title</a></h4>
-                    <p>Description Content: let's try to be cool, otherwise,w at 'sthe point in libing together with people youdont' live.</p>
-                </div>
-                <div class="subforum-stats subforum-column center">
-                    <span>24 Posts | 12 Topics</span>
-                </div>
-                <div class="subforum-info subforum-column">
-                    <b><a href="">Last post</a></b> by <a href="">JustAUser</a> 
-                    <br>on <small>12 Dec 2020</small>
-                </div>
-            </div>
-            <hr class="subforum-devider">
-            <div class="subforum-row">
-                <div class="subforum-icon subforum-column center">
-                    <i class="fa fa-car center"></i>
-                </div>
-                <div class="subforum-description subforum-column">
-                    <h4><a href="#">Description Title</a></h4>
-                    <p>Description Content: let's try to be cool, otherwise,w at 'sthe point in libing together with people youdont' live.</p>
-                </div>
-                <div class="subforum-stats subforum-column center">
-                    <span>24 Posts | 12 Topics</span>
-                </div>
-                <div class="subforum-info subforum-column">
-                    <b><a href="">Last post</a></b> by <a href="">JustAUser</a> 
-                    <br>on <small>12 Dec 2020</small>
-                </div>
-            </div>
-            <hr class="subforum-devider">
-            <div class="subforum-row">
-                <div class="subforum-icon subforum-column center">
-                    <i class="fa fa-car center"></i>
-                </div>
-                <div class="subforum-description subforum-column">
-                    <h4><a href="#">Description Title</a></h4>
-                    <p>Description Content: let's try to be cool, otherwise,w at 'sthe point in libing together with people youdont' live.</p>
-                </div>
-                <div class="subforum-stats subforum-column center">
-                    <span>24 Posts | 12 Topics</span>
-                </div>
-                <div class="subforum-info subforum-column">
-                    <b><a href="">Last post</a></b> by <a href="">JustAUser</a> 
-                    <br>on <small>12 Dec 2020</small>
-                </div>
-            </div>
-            <hr class="subforum-devider">
-            <div class="subforum-row">
-                <div class="subforum-icon subforum-column center">
-                    <i class="fa fa-car center"></i>
-                </div>
-                <div class="subforum-description subforum-column">
-                    <h4><a href="#">Description Title</a></h4>
-                    <p>Description Content: let's try to be cool, otherwise,w at 'sthe point in libing together with people youdont' live.</p>
-                </div>
-                <div class="subforum-stats subforum-column center">
-                    <span>24 Posts | 12 Topics</span>
-                </div>
-                <div class="subforum-info subforum-column">
-                    <b><a href="">Last post</a></b> by <a href="">JustAUser</a> 
-                    <br>on <small>12 Dec 2020</small>
-                </div>
-            </div>
 
-           
         </div>
-        <!---->
-    </div>
-
-    <!-- Forum Info -->
-    <div class="forum-info">
-        <div class="chart">
-            MyForum - Stats &nbsp;<i class="fa fa-bar-chart"></i>
+        <div class="subforum-row">
+            <div class="subforum-icon subforum-column center">
+                <i class="fa fa-building center"></i>
+            </div>
+            <div class="subforum-description subforum-column">
+                <h4><a href=" ./posts.html">सीजीएचएस/CGHS</a></h4>
+                 <p>Posts: <a href=" ./posts.html">Click here to view all</a></p>
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span>21 Posts <br> 10 Topics</span>
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span>Views = 134 <br> Last Post: <a href=" ./posts.html">Click here to view the last post</a></span>
+            </div>
         </div>
-        <span><u>5,369</u> Posts in <u>48</u> Topics by <u>8,124</u> Members.</span><br>
-        <span>Latest post: <b><a href="">Random post</a></b> on Dec 15 2021 By <a href="">RandomUser</a></span>.<br>
-        <span>Check <a href="">the latest posts</a> .</span><br>
-    </div>
+        <div class="subforum-row">
+            <div class="subforum-icon subforum-column center">
+                <i class="fa fa-building center"></i>
+            </div>
+            <div class="subforum-description subforum-column">
+                <h4><a href=" ./posts.html">सीएसडी कैन्टीन / CSD Canteen</a></h4>
+                <p>Posts: <a href=" ./posts.html">Click here to view all</a></p>
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span>18 Posts <br> 8 Topics</span>
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span>Views = 120 <br> Last Post: <a href=" ./posts.html">Click here to view the last post</a></span>
+            </div>
+        </div>
+        <hr class="subforum-devider">
 
+        <div class="subforum-row">
+            <div class="subforum-icon subforum-column center">
+                <i class="fa fa-calculator center"></i>
+            </div>
+            <div class="subforum-description subforum-column">
+                <h4><a href=" ./posts.html">वित्त / Finance</a></h4>
+                <p>Posts: <a href=" ./posts.html">Click here to view all</a></p>
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span>25 Posts <br> 9 Topics</span>
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span>Views = 160 <br> Last Post: <a href=" ./posts.html">Click here to view the last post</a></span>
+            </div>
+        </div>
+        <hr class="subforum-devider">
+
+        <div class="subforum-row">
+            <div class="subforum-icon subforum-column center">
+                <i class="fa fa-users center"></i>
+            </div>
+            <div class="subforum-description subforum-column">
+                <h4><a href=" ./posts.html">एचआरडी / HRD</a></h4>
+                <p>Posts: <a href=" ./posts.html">Click here to view all</a></p>
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span>30 Posts <br> 12 Topics</span>
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span>Views = 210 <br> Last Post: <a href=" ./posts.html">Click here to view the last post</a></span>
+            </div>
+        </div>
+        <hr class="subforum-devider">
+
+        <div class="subforum-row">
+            <div class="subforum-icon subforum-column center">
+                <i class="fa fa-laptop center"></i>
+            </div>
+            <div class="subforum-description subforum-column">
+                <h4><a href=" ./posts.html">सूचना प्रौद्योगिकी समूह / Information Technology Group</a></h4>
+                <p>Posts: <a href=" ./posts.html">Click here to view all</a></p>
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span>40 Posts <br> 15 Topics</span>
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span>Views = 300 <br> Last Post: <a href=" ./posts.html">Click here to view the last post</a></span>
+            </div>
+        </div>
+        <hr class="subforum-devider">
+
+        <div class="subforum-row">
+            <div class="subforum-icon subforum-column center">
+                <i class="fa fa-cogs center"></i>
+            </div>
+            <div class="subforum-description subforum-column">
+                <h4><a href=" ./posts.html">यंत्रण विज्ञान / Instrumentation</a></h4>
+                <p>Posts: <a href=" ./posts.html">Click here to view all</a></p>
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span>22 Posts <br> 7 Topics</span>
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span>Views = 180 <br> Last Post: <a href=" ./posts.html">Click here to view the last post</a></span>
+            </div>
+        </div>
+        <hr class="subforum-devider">
+
+        <div class="subforum-row">
+            <div class="subforum-icon subforum-column center">
+                <i class="fa fa-book center"></i>
+            </div>
+            <div class="subforum-description subforum-column">
+                <h4><a href=" ./posts.html">पुस्तकालय / Library</a></h4>
+                <p>Posts: <a href=" ./posts.html">Click here to view all</a></p>
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span>50 Posts <br> 20 Topics</span>
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span>Views = 500 <br> Last Post: <a href=" ./posts.html">Click here to view the last post</a></span>
+            </div>
+        </div>
+        <hr class="subforum-devider">
+
+        <div class="subforum-row">
+            <div class="subforum-icon subforum-column center">
+                <i class="fa fa-paint-brush center"></i>
+            </div>
+            <div class="subforum-description subforum-column">
+                <h4><a href=" ./posts.html">मास्क फैकल्टी / Mask Faculty</a></h4>
+                <p>Posts: <a href=" ./posts.html">Click here to view all</a></p>
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span>17 Posts <br> 5 Topics</span>
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span>Views = 140 <br> Last Post: <a href=" ./posts.html">Click here to view the last post</a></span>
+            </div>
+        </div>
+        <hr class="subforum-devider">
+        
+        <div class="subforum-row">
+            <div class="subforum-icon subforum-column center">
+                <i class="fa fa-users center"></i>
+            </div>
+            <div class="subforum-description subforum-column">
+                <h4><a href=" ./posts.html">क्यूएमएस समूह / QMS Group</a></h4>
+                <p>Posts: <a href=" ./posts.html">Click here to view all</a></p>
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span>12 Posts <br> 3 Topics</span>
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span>Views = 95 <br> Last Post: <a href=" ./posts.html">Click here to view the last post</a></span>
+            </div>
+        </div>
+        <hr class="subforum-devider">
+        
+        <div class="subforum-row">
+            <div class="subforum-icon subforum-column center">
+                <i class="fa fa-flask center"></i>
+            </div>
+            <div class="subforum-description subforum-column">
+                <h4><a href=" ./posts.html">ठोस अवस्था भौतिकी प्रयोगशाला / Solid State Physics Laboratory</a></h4>
+                <p>Posts: <a href=" ./posts.html">Click here to view all</a></p>
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span>45 Posts <br> 18 Topics</span>
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span>Views = 400 <br> Last Post: <a href=" ./posts.html">Click here to view the last post</a></span>
+            </div>
+        </div>
+        <hr class="subforum-devider">
+
+        <div class="subforum-row">
+            <div class="subforum-icon subforum-column center">
+                <i class="fa fa-shield center"></i>
+            </div>
+            <div class="subforum-description subforum-column">
+                <h4><a href=" ./posts.html">सुरक्षा / Security</a></h4>
+                <p>Posts: <a href=" ./posts.html">Click here to view all</a></p>
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span>32 Posts <br> 10 Topics</span>
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span>Views = 250 <br> Last Post: <a href=" ./posts.html">Click here to view the last post</a></span>
+            </div>
+        </div>
+        <hr class="subforum-devider">
+
+        <div class="subforum-row">
+            <div class="subforum-icon subforum-column center">
+                <i class="fa fa-cogs center"></i>
+            </div>
+            <div class="subforum-description subforum-column">
+                <h4><a href=" ./posts.html">तकनीकी सचिवालय / Technical Secretariat</a></h4>
+                <p>Posts: <a href=" ./posts.html">Click here to view all</a></p>
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span>28 Posts <br> 11 Topics</span>
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span>Views = 190 <br> Last Post: <a href=" ./posts.html">Click here to view the last post</a></span>
+            </div>
+        </div>
+        <hr class="subforum-devider">
+
+        <div class="subforum-row">
+            <div class="subforum-icon subforum-column center">
+                <i class="fa fa-building center"></i>
+            </div>
+            <div class="subforum-description subforum-column">
+                <h4><a href=" ./posts.html">वेट कैन्टीन / Wet Canteen</a></h4>
+                <p>Posts: <a href=" ./posts.html">Click here to view all</a></p>
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span>16 Posts <br> 6 Topics</span>
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span>Views = 130 <br> Last Post: <a href=" ./posts.html">Click here to view the last post</a></span>
+            </div>
+        </div>
+        <hr class="subforum-devider">
+
+        <div class="subforum-row">
+            <div class="subforum-icon subforum-column center">
+                <i class="fa fa-cogs center"></i>
+            </div>
+            <div class="subforum-description subforum-column">
+                <h4><a href=" ./posts.html">वर्क्स सेक्शन / Works Section</a></h4>
+                <p>Posts: <a href=" ./posts.html">Click here to view all</a></p>
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span>35 Posts <br> 13 Topics</span>
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span>Views = 220 <br> Last Post: <a href=" ./posts.html">Click here to view the last post</a></span>
+            </div>
+            
+        </div>
+    </div>
     <footer>
-        <span>&copy;  Selmi Abderrahim | All Rights Reserved</span>
+        <span>&copy;  Solid State Physics Laboratory | All Rights Reserved</span>
     </footer>
     <script src="main.js"></script>
+    <script>
+        // Function to dynamically fetch posts and display them
+        window.onload = function() {
+            fetchPosts();
+        };
+        
+        function fetchPosts() {
+            // Simulate fetching posts from posts.html. Ideally, this would be from an API or external source.
+            const posts = [
+                {
+                    title: "Updates on Administrative Reforms in DRDO",
+                    link: "./detail.html?id=1"
+                },
+                {
+                    title: "Finance Management Innovations in DRDO Labs",
+                    link: "./detail.html?id=2"
+                },
+                {
+                    title: "CSD Canteen Modernization Updates",
+                    link: "./detail.html?id=3"
+                },
+                {
+                    title: "CGHS Benefits Expansion for DRDO Employees",
+                    link: "./detail.html?id=4"
+                },
+                {
+                    title: "HRD Initiatives for Skill Development in DRDO",
+                    link: "./detail.html?id=5"
+                },
+                // Add more posts as needed
+            ];
+        
+            // Get the bulletin scroll container
+            const bulletinContainer = document.getElementById("bulletin-posts");
+        
+            // Loop through the posts and add them to the container
+            posts.forEach(post => {
+                const postElement = document.createElement("a");
+                postElement.href = post.link;
+                postElement.textContent = post.title;
+                postElement.style.marginRight = "30px"; // Adding some space between posts
+                bulletinContainer.appendChild(postElement);
+            });
+        }
+        </script>
+        
 </body>
 </html>
