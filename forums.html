@@ -46,10 +46,12 @@
     </header>
     <div class="container">
         <div id="latest-bulletin">
-            <div class="bulletin-scroll" id="bulletin-posts">
-                <!-- Posts will be dynamically inserted here -->
+            <div class="bulletin-scroll">
+                <!-- Post links will be dynamically added here -->
             </div>
         </div>
+        
+        
         
         <div class="subforum">
             <div class="subforum-title">
@@ -318,47 +320,62 @@
     <script>
         // Function to dynamically fetch posts and display them
         window.onload = function() {
-            fetchPosts();
-        };
-        
-        function fetchPosts() {
-            // Simulate fetching posts from posts.html. Ideally, this would be from an API or external source.
-            const posts = [
-                {
-                    title: "Updates on Administrative Reforms in DRDO",
-                    link: "./detail.html?id=1"
-                },
-                {
-                    title: "Finance Management Innovations in DRDO Labs",
-                    link: "./detail.html?id=2"
-                },
-                {
-                    title: "CSD Canteen Modernization Updates",
-                    link: "./detail.html?id=3"
-                },
-                {
-                    title: "CGHS Benefits Expansion for DRDO Employees",
-                    link: "./detail.html?id=4"
-                },
-                {
-                    title: "HRD Initiatives for Skill Development in DRDO",
-                    link: "./detail.html?id=5"
-                },
-                // Add more posts as needed
-            ];
-        
-            // Get the bulletin scroll container
-            const bulletinContainer = document.getElementById("bulletin-posts");
-        
-            // Loop through the posts and add them to the container
-            posts.forEach(post => {
-                const postElement = document.createElement("a");
-                postElement.href = post.link;
-                postElement.textContent = post.title;
-                postElement.style.marginRight = "30px"; // Adding some space between posts
-                bulletinContainer.appendChild(postElement);
-            });
+    fetchPosts();
+    addScrollToggle();
+};
+
+function fetchPosts() {
+    const posts = [
+        {
+            title: "Updates on Administrative Reforms in DRDO",
+            link: "./detail.html?id=1"
+        },
+        {
+            title: "Finance Management Innovations in DRDO Labs",
+            link: "./detail.html?id=2"
+        },
+        {
+            title: "CSD Canteen Modernization Updates",
+            link: "./detail.html?id=3"
+        },
+        {
+            title: "CGHS Benefits Expansion for DRDO Employees",
+            link: "./detail.html?id=4"
+        },
+        {
+            title: "HRD Initiatives for Skill Development in DRDO",
+            link: "./detail.html?id=5"
+        },
+    ];
+
+    const bulletinScroll = document.querySelector('.bulletin-scroll');
+    posts.forEach(post => {
+        const postElement = document.createElement('a');
+        postElement.href = post.link;
+        postElement.textContent = post.title;
+        bulletinScroll.appendChild(postElement);
+    });
+}
+
+function addScrollToggle() {
+    const toggleButton = document.getElementById('toggle-scroll');
+    const bulletinScroll = document.querySelector('.bulletin-scroll');
+
+    let isPaused = false;
+
+    toggleButton.addEventListener('click', function() {
+        if (isPaused) {
+            bulletinScroll.style.animationPlayState = 'running';  // Resume the animation
+            toggleButton.textContent = 'Pause Scroll';
+        } else {
+            bulletinScroll.style.animationPlayState = 'paused';  // Pause the animation
+            toggleButton.textContent = 'Resume Scroll';
         }
+        isPaused = !isPaused; // Toggle the state
+    });
+}
+
+
         </script>
         <script>
             // Add this to your existing main.js or include it here
