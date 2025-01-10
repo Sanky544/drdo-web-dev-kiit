@@ -33,6 +33,7 @@
                 
             </div>
         </div>
+        
     </header>
     <div class="container">
         <!--Navigation-->
@@ -312,7 +313,7 @@
         <a href="#" class="next" data-page="next">Next</a>
     </div>
         
-        
+</div>  
         
         <!--pagination ends-->
     </div>
@@ -321,6 +322,105 @@
         <span>&copy;  Solid State Physics Laboratory | All Rights Reserved</span>
     </footer>
     <script src="main.js"></script>
-    
+    <script>
+        // Improved Search Functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.querySelector('.search-box input');
+    const tableRows = document.querySelectorAll('.table-row');
+
+    if (searchInput) {
+        searchInput.addEventListener('input', (event) => {
+            const filterText = event.target.value.toLowerCase();
+            
+            tableRows.forEach(row => {
+                const topic = row.querySelector('.subjects').innerText.toLowerCase();
+                if (topic.includes(filterText)) {
+                    row.style.display = ''; // Show row
+                } else {
+                    row.style.display = 'none'; // Hide row
+                }
+            });
+        });
+    }
+});
+</script>
+<script>
+       document.addEventListener('DOMContentLoaded', () => {
+    const postsPerPage = 10;
+    const tableRows = Array.from(document.querySelectorAll('.table-row'));
+    const paginationContainer = document.querySelector('.pagination');
+    const totalPages = Math.ceil(tableRows.length / postsPerPage);
+
+    // Function to display posts for a specific page
+    function displayPage(pageNumber) {
+        // Hide all rows
+        tableRows.forEach(row => row.style.display = 'none');
+
+        // Calculate the start and end index for the posts to display
+        const startIndex = (pageNumber - 1) * postsPerPage;
+        const endIndex = startIndex + postsPerPage;
+
+        // Show only the rows for the current page
+        for (let i = startIndex; i < endIndex && i < tableRows.length; i++) {
+            tableRows[i].style.display = 'flex'; // Adjust to match your row layout (e.g., flex or block)
+        }
+
+        // Update active page styling
+        document.querySelectorAll('.page-number').forEach(link => {
+            link.classList.remove('active');
+        });
+        document.querySelector(`.page-number[data-page="${pageNumber}"]`).classList.add('active');
+    }
+
+    // Function to create pagination links
+    function createPagination() {
+        // Clear existing links
+        paginationContainer.innerHTML = '';
+
+        // Create "Prev" button
+        const prevButton = document.createElement('a');
+        prevButton.href = '#';
+        prevButton.className = 'prev';
+        prevButton.textContent = 'Prev';
+        prevButton.addEventListener('click', () => {
+            const currentPage = parseInt(document.querySelector('.page-number.active').dataset.page);
+            if (currentPage > 1) {
+                displayPage(currentPage - 1);
+            }
+        });
+        paginationContainer.appendChild(prevButton);
+
+        // Create page number links
+        for (let i = 1; i <= totalPages; i++) {
+            const pageLink = document.createElement('a');
+            pageLink.href = '#';
+            pageLink.className = 'page-number';
+            pageLink.dataset.page = i;
+            pageLink.textContent = i;
+            pageLink.addEventListener('click', () => {
+                displayPage(i);
+            });
+            paginationContainer.appendChild(pageLink);
+        }
+
+        // Create "Next" button
+        const nextButton = document.createElement('a');
+        nextButton.href = '#';
+        nextButton.className = 'next';
+        nextButton.textContent = 'Next';
+        nextButton.addEventListener('click', () => {
+            const currentPage = parseInt(document.querySelector('.page-number.active').dataset.page);
+            if (currentPage < totalPages) {
+                displayPage(currentPage + 1);
+            }
+        });
+        paginationContainer.appendChild(nextButton);
+    }
+
+    // Initialize pagination and display the first page
+    createPagination();
+    displayPage(1);
+});
+</script>
 </body>
 </html>

@@ -60,13 +60,23 @@ h1 {
 .bulletin-scroll a {
     margin-right: 30px; /* Spacing between posts */
     text-decoration: none;
-    color: #000;
+    color: #333;
     font-weight: bold;
     font-size: 18px;
-    transition: color 0.3s;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: color 0.3s, transform 0.3s;
+    animation: blink 1s infinite; /* Apply blinking effect */
 }
 
-/* Add alternating colors for blinking effect */
+/* Hover effect */
+.bulletin-scroll a:hover {
+    color: #0056b3; /* Change color on hover */
+    border-bottom: 2px solid blue; /* Blue underline on hover */
+    transform: scale(1.05); /* Slight scaling effect */
+}
+
+/* Blinking effect */
 @keyframes blink {
     0% {
         color: red;
@@ -79,11 +89,6 @@ h1 {
     }
 }
 
-/* Apply blinking effect to the posts */
-.bulletin-scroll a {
-    animation: blink 1s infinite;  /* Blink every 1 second */
-}
-
 /* Animations for scrolling effect */
 @keyframes scroll-left {
     0% {
@@ -94,7 +99,6 @@ h1 {
     }
 }
 
-
 .subforum {
     margin-top: 20px;
 }
@@ -103,6 +107,7 @@ h1 {
     display: grid;
     grid-template-columns: 10% 50% 15% 25%;  /* Adjusted for full width */
     transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    overflow: hidden;
 }
 
 .subforum-row:hover {

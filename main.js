@@ -79,66 +79,25 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
-let departments = [
-    { name: 'प्रशासन/Admin' },
-    { name: 'सीजीएचएस/CGHS' },
-    { name: 'सीएसडी कैन्टीन / CSD Canteen' },
-    { name: 'वित्त / Finance' },
-    { name: 'एचआरडी / HRD' },
-    { name: 'सूचना प्रौद्योगिकी समूह / Information Technology Group' },
-    { name: 'यंत्रण विज्ञान / Instrumentation' },
-    { name: 'पुस्तकालय / Library' },
-    { name: 'मास्क फैकल्टी / Mask Faculty' },
-    { name: 'क्यूएमएस समूह / QMS Group' },
-    { name: 'ठोस अवस्था भौतिकी प्रयोगशाला / Solid State Physics Laboratory' },
-    { name: 'सुरक्षा / Security' },
-    { name: 'तकनीकी सचिवालय / Technical Secretariat' },
-    { name: 'वेट कैन्टीन / Wet Canteen' },
-    { name: 'वर्क्स सेक्शन / Works Section' }
-];
 
-// Function to show suggestions as you type
-function showSuggestions() {
-    let input = document.getElementById('searchInput').value.toLowerCase();
-    let suggestionsList = document.getElementById('suggestionsList');
-    
-    // Clear the previous suggestions
-    suggestionsList.innerHTML = '';
-    
-    // If input is not empty, show suggestions
-    if (input) {
-        let filteredDepartments = departments.filter(department => department.name.toLowerCase().includes(input));
-        
-        // Show suggestions if there are any matches
-        if (filteredDepartments.length > 0) {
-            suggestionsList.style.display = 'block';  // Show the dropdown
-            filteredDepartments.forEach(department => {
-                let li = document.createElement('li');
-                li.textContent = department.name;
-                li.onclick = function() {
-                    document.getElementById('searchInput').value = department.name;  // Set the selected department
-                    suggestionsList.style.display = 'none';  // Hide suggestions after selection
-                };
-                suggestionsList.appendChild(li);
-            });
+document.getElementById('searchInput').addEventListener('input', function () {
+    const filterText = this.value.toLowerCase();
+    const subforumRows = document.querySelectorAll('.subforum-row');
+
+    subforumRows.forEach(row => {
+        const department = row.querySelector('.subforum-description h4 a').innerText.toLowerCase();
+        if (department.includes(filterText)) {
+            row.style.visibility = 'visible';
+            row.style.height = 'auto'; // Reset height
+            row.style.marginBottom = ''; // Reset margin
         } else {
-            suggestionsList.style.display = 'none';  // Hide if no matches
+            row.style.visibility = 'hidden';
+            row.style.height = '0'; // Collapse height
+            row.style.marginBottom = '0'; // Remove spacing
         }
-    } else {
-        suggestionsList.style.display = 'none';  // Hide if input is empty
-    }
-}
+    });
+});
 
-// Function for search (this is where you would trigger your actual search)
-function searchDepartment() {
-    var searchInput = document.getElementById("searchInput").value;
-    if (searchInput.trim() !== "") {
-        // Redirect to posts.html with the search query as a URL parameter
-        window.location.href = "./posts.html?q=" + encodeURIComponent(searchInput);
-    } else {
-        alert("Please enter a department to search.");
-    }
-}
 // Show the comment box when the "Reply" button is clicked
 function showComment() {
     const commentBox = document.getElementById("comment-box");
@@ -232,56 +191,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         document.querySelector(`.page-number[data-page="${pageNumber}"]`).classList.add('active');
     }
-
-    // Function to create pagination links
-    function createPagination() {
-        // Clear existing links
-        paginationContainer.innerHTML = '';
-
-        // Create "Prev" button
-        const prevButton = document.createElement('a');
-        prevButton.href = '#';
-        prevButton.className = 'prev';
-        prevButton.textContent = 'Prev';
-        prevButton.addEventListener('click', () => {
-            const currentPage = parseInt(document.querySelector('.page-number.active').dataset.page);
-            if (currentPage > 1) {
-                displayPage(currentPage - 1);
-            }
-        });
-        paginationContainer.appendChild(prevButton);
-
-        // Create page number links
-        for (let i = 1; i <= totalPages; i++) {
-            const pageLink = document.createElement('a');
-            pageLink.href = '#';
-            pageLink.className = 'page-number';
-            pageLink.dataset.page = i;
-            pageLink.textContent = i;
-            pageLink.addEventListener('click', () => {
-                displayPage(i);
-            });
-            paginationContainer.appendChild(pageLink);
-        }
-
-        // Create "Next" button
-        const nextButton = document.createElement('a');
-        nextButton.href = '#';
-        nextButton.className = 'next';
-        nextButton.textContent = 'Next';
-        nextButton.addEventListener('click', () => {
-            const currentPage = parseInt(document.querySelector('.page-number.active').dataset.page);
-            if (currentPage < totalPages) {
-                displayPage(currentPage + 1);
-            }
-        });
-        paginationContainer.appendChild(nextButton);
-    }
-
-    // Initialize pagination and display the first page
-    createPagination();
-    displayPage(1);
-});
 document.querySelectorAll('.table-row .subjects a').forEach(link => {
     const row = link.parentElement.parentElement;
 
@@ -298,4 +207,5 @@ document.querySelectorAll('.table-row .subjects a').forEach(link => {
         localStorage.setItem(link.href, 'read');
     });
 });
+})
 
