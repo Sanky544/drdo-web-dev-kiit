@@ -523,5 +523,33 @@ const emojis = ['😊', '👍', '❤️', '🎉', '😂', '🤔', '👏', '🌟'
             element.parentElement.remove();
         }
     </script>
+    <script>
+        // Check user department on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const userDepartment = localStorage.getItem('userDepartment');
+            const userType = localStorage.getItem('userType');
+            const forumSection = document.getElementById('forum-section');
+            
+            if (!localStorage.getItem('isLoggedIn')) {
+                // Redirect to login if not logged in
+                window.location.href = 'login2.html';
+                return;
+            }
+        
+            if (userType === 'employee' && userDepartment !== 'all') {
+                // For department admins, set and lock their department
+                forumSection.value = userDepartment;
+                forumSection.disabled = true;
+                
+                // Hide other options
+                Array.from(forumSection.options).forEach(option => {
+                    if (option.value !== userDepartment && option.value !== '') {
+                        option.style.display = 'none';
+                    }
+                });
+            }
+            // Master admin can access all departments, no restrictions needed
+        });
+        </script>
 </body>
 </html>

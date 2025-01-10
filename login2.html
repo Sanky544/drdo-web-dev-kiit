@@ -5,23 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="loginstyles.css">
+    <style>
+        /* Add styles for the department dropdown */
+        .department-select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #999;
+            outline: none;
+            background: transparent;
+            font-size: 25px;
+        }
+        
+        .department-select option {
+            background: white;
+        }
+    </style>
 </head>
 <body>
     <div class="hero">
         <div class="form-box">
             <div class="button-box">
                 <div id="btn"></div>
-                <button type="button" class="toggle-btn" onclick="login()">Employee</button>
-                <button type="button" class="toggle-btn admin-btn" onclick="register()">Admin</button>
+                <button type="button" class="toggle-btn" onclick="login()">Dept. Admin</button>
+                <button type="button" class="toggle-btn admin-btn" onclick="register()">Master Admin</button>
             </div>
-            <form id="login" class="input-group" >
-                <!-- Added IDs to match the JavaScript -->
+            <form id="login" class="input-group">
+                <select class="department-select" id="departmentSelect" required>
+                    <option value="">Select Department...</option>
+                    <option value="admin">प्रशासन / Admin</option>
+                    <option value="cghs">सीजीएचएस / CGHS</option>
+                    <option value="csd">सीएसडी कैंटीन / CSD Canteen</option>
+                    <option value="finance">बित्त / Finance</option>
+                    <option value="hrd">एचआरडी / HRD</option>
+                    <option value="it">सुचना प्रद्योगिकी समूह / IT Group</option>
+                </select>
                 <input type="text" class="input-field" id="employeeId" style="font-size:25px;" placeholder="Employee Id" required>
                 <input type="password" class="input-field" id="employeePassword" style="font-size:25px;" placeholder="Password" required>
                 <button type="submit" class="submit-btn">Log In</button>
             </form>
-            <form id="register" class="input-group" >
-                <!-- Added IDs to match the JavaScript -->
+            <form id="register" class="input-group">
                 <input type="text" class="input-field" id="adminId" style="font-size:25px;" placeholder="Admin Id" required>
                 <input type="password" class="input-field" id="adminPassword" style="font-size:25px;" placeholder="Password" required>
                 <input type="password" class="input-field" id="adminKey" style="font-size:25px;" placeholder="Admin Key" required>
@@ -52,16 +75,15 @@
             
             const employeeId = document.getElementById("employeeId").value;
             const password = document.getElementById("employeePassword").value;
+            const department = document.getElementById("departmentSelect").value;
 
-            // Here you would typically validate credentials against a backend
-            // For now, we'll just check if fields are not empty
-            if (employeeId && password) {
-                // Store login state and user info
+            if (employeeId && password && department) {
+                // Store login state and user info including department
                 localStorage.setItem('isLoggedIn', 'true');
                 localStorage.setItem('userType', 'employee');
                 localStorage.setItem('userId', employeeId);
+                localStorage.setItem('userDepartment', department);
                 
-                // Redirect to forums page
                 window.location.href = "forums.html";
             }
         }
@@ -74,21 +96,16 @@
             const password = document.getElementById("adminPassword").value;
             const adminKey = document.getElementById("adminKey").value;
 
-            // Here you would typically validate admin credentials against a backend
-            // For now, we'll just check if fields are not empty
             if (adminId && password && adminKey) {
-                // Store login state and user info
                 localStorage.setItem('isLoggedIn', 'true');
                 localStorage.setItem('userType', 'admin');
                 localStorage.setItem('userId', adminId);
+                // Master admin has access to all departments
+                localStorage.setItem('userDepartment', 'all');
                 
-                // Redirect to forums page
                 window.location.href = "forums.html";
             }
         }
-
-        // Add this to help debug
-        console.log('Script loaded');
     </script>
     <script src="https://kit.fontawesome.com/6c1a55b681.js" crossorigin="anonymous"></script>
 </body>
