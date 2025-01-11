@@ -1,24 +1,27 @@
-*{
+/* Global styles */
+* {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
 }
 
-.hero{
+/* Hero background */
+.hero {
     height: 100%;
     width: 100%;
-    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(https://sandipanch.tech/drdo_bg.png);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(https://sandipanch.tech/drdo_bg.png);
     background-position: center;
     background-size: cover;
     position: absolute;
 }
 
-.form-box{
+/* Form box */
+.form-box {
     width: 500px;
-    height: 500px;
+    height: 550px;
     position: relative;
     margin: 6% auto;
-    box-shadow: 0 0 5px 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); /* Subtle shadow for depth */
     backdrop-filter: saturate(180%) blur(20px);
     background-color: rgba(255, 255, 255, 0.1);
     padding: 5px;
@@ -26,40 +29,51 @@
     overflow: hidden;
 }
 
-.button-box{
-    width: 300px;
+/* Button box */
+.button-box {
+    width: 320px;
     margin: 35px auto;
     position: relative;
-    box-shadow: 0 0 20px 9px #ff61241f;
+    display: flex;
+    justify-content: space-between;
     border-radius: 30px;
 }
 
-.toggle-btn{
-    height: 50px;
-    padding: 10px 40px;
+/* Toggle button */
+.toggle-btn {
+    height: 60px;
+    padding: 10px 45px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     color: aliceblue;
-
     background: transparent;
-    border: black;
+    border: none;
     outline: none;
     position: relative;
+    z-index: 1;
+    transition: transform 0.2s ease; /* Add animation on hover */
 }
 
-#btn{
+.toggle-btn:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+#btn {
     top: 0;
     left: 0;
     position: absolute;
-    width: 150px;
+    width: 160px;
     height: 100%;
     background: linear-gradient(to right, #1b29a5, #3b92fe);
     border-radius: 30px;
-    transition: 0.5s;
+    transition: 0.5s ease;
+    z-index: 0;
+    box-shadow: none; /* Removed the orange shadow */
 }
 
-.input-group{
+/* Input group */
+.input-group {
     top: 180px;
     position: absolute;
     width: 300px;
@@ -68,25 +82,82 @@
     padding-right: 60px;
 }
 
-.input-field{
-    display: flex;
-    width: 100%;
-    padding: 10px 0;
-    margin: 10px 0;
-    border-left: 0;
-    border-right: 0;
-    border-top: 0;
-    border-bottom: 3px solid #e6e6e6ae;
+.input-field {
+    width: 85%; /* Adjusted width */
+    height: 40px; /* Reduced height */
+    margin: 15px auto; /* Adjusted spacing */
+    padding: 5px 10px;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3));
+    color: #fff;
+    font-size: 15px; /* Slightly smaller font */
+    font-family: 'Roboto', sans-serif;
     outline: none;
-    background: transparent;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease-in-out;
 }
 
 .input-field::placeholder {
-    font-size: large;
-    color: #000000;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
 }
 
-.submit-btn{
+.input-field:hover {
+    background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.4));
+    border-color: #3b92fe;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.input-field:focus {
+    border-color: #3b92fe;
+    box-shadow: 0 0 12px rgba(59, 146, 254, 0.6);
+    background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.5));
+}
+
+/* Department select with enhanced specificity */
+.form-box .department-select {
+    width: 93%; /* Matches input fields */
+    height: 55px; /* Same height as input field */
+    margin: 15px auto; /* Adjusted spacing */
+    padding: 5px 10px;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3));
+    color: #fff;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    outline: none;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Adding hover and focus state styling */
+.form-box .department-select:hover {
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+}
+
+.form-box .department-select:focus {
+    border-color: #3b92fe;
+    box-shadow: 0 0 12px rgba(59, 146, 254, 0.6);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Ensure dropdown options styling remains intact */
+.form-box .department-select option {
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+}
+
+.form-box .department-select option:hover {
+    background: #3b92fe;
+    color: #fff;
+}
+
+/* Submit button */
+.submit-btn {
     width: 85%;
     padding: 10px 30px;
     cursor: pointer;
@@ -101,11 +172,11 @@
     border-radius: 30px;
 }
 
-
-#login{
+/* Specific form alignment */
+#login {
     left: 50px;
 }
 
-#register{
+#register {
     left: 450px;
 }

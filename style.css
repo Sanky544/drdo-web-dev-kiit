@@ -242,7 +242,7 @@ header {
     border-radius: 10px;  /* Round edges for navbar */
     max-height: 80px;
     margin-right: 10px;
-    color: #F0F0F0;
+    color: #F0F0F0;
 }
 
 .close-icon i {
@@ -263,7 +263,7 @@ header {
     margin-inline: 20px;
     font-size: 20px;
     padding: 10px;
-    color: #ffffff;  /* Dark color for the text */
+    color: #ffffff;  /* Dark color for the text */
 }
 
 .nav-item a:hover {
@@ -950,4 +950,95 @@ footer {
     text-align: center;
     border-radius: 0px;  /* Round edges */
     box-sizing: border-box;  /* Ensure padding is included in the width */
+}
+.navigate {
+    margin-block: 20px;
+    font-weight: lighter;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.navigate .path {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navigate a {
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.navigate a:hover {
+    color: #4CAF50;
+    font-weight: bolder;
+}
+
+/* Floating buttons container */
+.floating-buttons {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+}
+
+/* Base styles for floating buttons */
+.floating-btn {
+    background: #0056b3;
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.floating-btn:hover {
+    background: #003d82;
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.floating-btn i {
+    font-size: 18px;
+}
+
+/* Specific styles for reply button */
+.float-reply-btn {
+    background: #4CAF50;
+}
+
+.float-reply-btn:hover {
+    background: #388E3C;
+}
+
+/* Comment box animation */
+.comment-section {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Media query for mobile responsiveness */
+@media screen and (max-width: 768px) {
+    .floating-buttons {
+        right: 15px;
+    }
+
+    .floating-btn {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
 }

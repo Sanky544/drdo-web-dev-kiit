@@ -38,8 +38,23 @@
     <div class="container">
         <!--Navigation-->
         <div class="navigate">
-            <span><a href="./forums.html">Forums</a> >> <a href="./posts.html">Posts</a> >> <a href="./detail.html">Details</a></span>
+            <div class="path">
+                <a href="./forums.html">Forums</a> >>
+                <a href="./posts.html">Posts</a> >>
+                <a href="./detail.html">Details</a>
+            </div>
+            <div class="floating-buttons">
+                <button class="floating-btn" onclick="scrollToTopReplies()">
+                    <i class="fa fa-comments"></i>
+                    Top Replies
+                </button>
+                <button class="floating-btn float-reply-btn" onclick="showComment()">
+                    <i class="fa fa-reply"></i>
+                    Reply
+                </button>
+            </div>
         </div>
+        
 
         <div class="news-content">
             <h1>🚀 DRDO Administrative Reforms - Boosting Efficiency & Innovation</h1>  
@@ -118,5 +133,36 @@
         <span>&copy;  Solid State Physics Laboratory | All Rights Reserved</span></footer>
     </footer>
     <script src="main.js"></script>
+    <script>
+        function showComment() {
+            const commentBox = document.getElementById('comment-box');
+            if (commentBox.style.display === 'none' || commentBox.style.display === '') {
+                commentBox.style.display = 'block';
+                // Smooth scroll to the comment box
+                commentBox.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                commentBox.style.display = 'none';
+            }
+        }
+        
+        function scrollToTopReplies() {
+            const topRepliesSection = document.querySelector('.comment-section');
+            if (topRepliesSection) {
+                topRepliesSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+        function addEmoji(emoji) {
+            const textarea = document.querySelector('.comment-textarea');
+            textarea.value += emoji;
+        }
+        
+        function submitReply() {
+            const textarea = document.querySelector('.comment-textarea');
+            // Add your reply submission logic here
+            textarea.value = ''; // Clear the textarea after submission
+            document.getElementById('comment-box').style.display = 'none'; // Hide the comment box
+        }
+        </script>
 </body>
 </html>
